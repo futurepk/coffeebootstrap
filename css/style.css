@@ -123,3 +123,22 @@ h6,
   color: var(--roast-caramel-dark);
   font-size: 1.25rem;
 }
+
+/*Sectie met cards*/
+
+#our-favorites {
+  color: var(--roast-caramel-dark);
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: bottom;
+}
+
+.price {
+  font-weight: bold;
+  font-size: large;
+}
+
+.three-cups h2 {
+  font-size: 3em;
+}
