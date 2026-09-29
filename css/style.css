@@ -1,3 +1,7 @@
+/* ==========================================================
+   Stap 0 – Startproject
+   ========================================================== */
+
 /* Eigen huisstijl: kleuren als CSS-variabelen */
 :root {
   --roast-espresso: #2b1d16;
@@ -5,7 +9,6 @@
   --roast-caramel-dark: #97562a;
   --roast-cream: #f5ede1;
   --roast-foam: #fcf8f2;
-  --roast-accent: var(--roast-caramel-dark);
 
   --roast-font-heading: "Fraunces", Georgia, serif;
   --roast-font-body: "Manrope", system-ui, sans-serif;
@@ -20,10 +23,6 @@
   --bs-link-color-rgb: 151, 86, 42;
   --bs-link-hover-color: var(--roast-espresso);
   --bs-link-hover-color-rgb: 43, 29, 22;
-}
-
-[data-bs-theme="dark"] {
-  --roast-accent: var(--roast-caramel);
 }
 
 /* Titels in een serif-lettertype */
@@ -63,6 +62,19 @@ h6,
   --bs-btn-focus-shadow-rgb: 200, 129, 74;
 }
 
+/* ==========================================================
+   Stap 1 – Navbar
+   ========================================================== */
+
+/* Accentkleur: donkere karamel op lichte achtergrond, lichte karamel op donkere */
+:root {
+  --roast-accent: var(--roast-caramel-dark);
+}
+
+[data-bs-theme="dark"] {
+  --roast-accent: var(--roast-caramel);
+}
+
 .text-caramel {
   color: var(--roast-accent) !important;
 }
@@ -87,12 +99,16 @@ h6,
   font-weight: 500;
 }
 
+/* ==========================================================
+   Stap 2 – Hero
+   ========================================================== */
+
 /* Achtergrondkleur als herbruikbare utility-class */
 .bg-cream {
   background-color: var(--roast-cream) !important;
 }
 
-/* Bootstrap stopt bij py-5 (3rem). We maken een py-6 in dezelfde stijl. 1rem = 16px */
+/* Bootstrap stopt bij py-5 (3rem). We maken een py-6 in dezelfde stijl. */
 .py-6 {
   padding-top: 4.5rem !important;
   padding-bottom: 4.5rem !important;
@@ -124,21 +140,104 @@ h6,
   font-size: 1.25rem;
 }
 
-/*Sectie met cards*/
+/* ==========================================================
+   Stap 3 – Populaire koffies
+   ========================================================== */
 
-#our-favorites {
-  color: var(--roast-caramel-dark);
+/* Klein label boven een sectietitel */
+.eyebrow {
+  margin-bottom: 0.75rem;
+  color: var(--roast-accent);
   font-size: 0.8rem;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-align: bottom;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.price {
-  font-weight: bold;
-  font-size: large;
+/* Kaart komt iets omhoog bij hover (alleen als de gebruiker beweging toelaat) */
+@media (prefers-reduced-motion: no-preference) {
+  .product-card {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--bs-box-shadow-lg) !important;
+  }
 }
 
-.three-cups h2 {
-  font-size: 3em;
+/* ==========================================================
+   Stap 4 – Over Roast & Co.
+   ========================================================== */
+
+/* Extra achtergrondkleuren */
+.bg-espresso {
+  background-color: var(--roast-espresso) !important;
 }
+
+.bg-caramel {
+  background-color: var(--roast-caramel-dark) !important;
+}
+
+/* Warmere tekstkleuren in elk blok met data-bs-theme="dark" */
+[data-bs-theme="dark"] {
+  --bs-body-color: #efe6da;
+  --bs-body-color-rgb: 239, 230, 218;
+  --bs-secondary-color: rgba(239, 230, 218, 0.7);
+}
+
+/* ==========================================================
+   Stap 5 – Menukaart
+   ========================================================== */
+
+/* Tabknoppen in huisstijl via de CSS-variabelen van .nav en .nav-pills */
+.menu-tabs {
+  --bs-nav-link-color: var(--roast-espresso);
+  --bs-nav-link-hover-color: var(--roast-caramel-dark);
+  --bs-nav-pills-link-active-color: #fff;
+  --bs-nav-pills-link-active-bg: var(--roast-espresso);
+}
+
+.menu-tabs .nav-link {
+  border: 1px solid var(--bs-border-color);
+  background-color: #fff;
+  font-weight: 600;
+}
+
+/* ==========================================================
+   Stap 6 – Klantenbeoordelingen
+   ========================================================== */
+
+/* Ronde initialen in plaats van een profielfoto */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--roast-cream);
+  color: var(--roast-espresso);
+  font-weight: 700;
+}
+
+[data-bs-theme="dark"] .avatar {
+  background-color: var(--roast-caramel-dark);
+  color: #fff;
+}
+
+/* ==========================================================
+   Stap 7 – Call-to-action
+   ========================================================== */
+
+/* Foto als achtergrond met een donkere laag (gradient) erover voor leesbare tekst.
+   Het pad start vanuit de map css/, daarom ../img/ */
+.cta {
+  background:
+    linear-gradient(rgba(43, 29, 22, 0.78), rgba(43, 29, 22, 0.9)),
+    url("../img/cta-cafe.jpg") center / cover no-repeat;
+}
+
+/* Form controls */
